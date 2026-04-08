@@ -1,0 +1,216 @@
+-- Criando o Banco de Dados
+
+CREATE DATABASE gestao_de_biblioteca
+
+ -- Usando o Banco de Dados
+
+USE gestao_de_biblioteca
+
+ -- Criando as tabelas
+ 
+  CREATE TABLE Autores (
+	ID_Autora INT IDENTITY(1,1) NOT NULL
+		CONSTRAINT pk__ID_Autora PRIMARY KEY,
+	Nome VARCHAR(200)
+);
+
+ CREATE TABLE Livros (
+	ID_Livro INT IDENTITY(1,1) NOT NULL
+		CONSTRAINT pk__book_id PRIMARY KEY,
+	Titulo VARCHAR(200) NOT NULL,
+	ID_Autora INT NOT NULL
+		CONSTRAINT fk__ID_Autora__ID_Autora FOREIGN KEY REFERENCES [Autores](ID_Autora),
+	AnodePublicacao VARCHAR(4)
+ );
+
+CREATE TABLE Emprestimos (
+	ID_Emprestimo INT IDENTITY(1,1) NOT NULL
+		CONSTRAINT pk_ID_Emprestimo PRIMARY KEY,
+	ID_Livro INT NOT NULL
+		CONSTRAINT fk__ID_Livro_ID_Livro FOREIGN KEY REFERENCES [Livros](ID_Livro),
+	DatadoEmprestimo DATE,
+	DatadoRetorno DATE
+);
+
+-- Inserindo registros nas tabelas
+
+INSERT INTO Autores VALUES
+('Elena Sylverton'),
+('Victor Everglen'),
+('Isadora Nightshade'),
+('Quentin Stormcloak'),
+('Seraphina Moonlight'),
+('Xander Shadowcaster'),
+('Luna Starfall'),
+('Felix Emberheart'),
+('Aria Dreamweaver'),
+('Zephyr Skydancer')
+
+
+
+INSERT INTO Livros VALUES 
+('Sombra das Estrelas', 1,'2018'), 
+('Sombras do Passado', 1,'2015'),  
+('Caminhos da Lua Azul', 1,'2017'), 
+('O Jardim Secreto das Estrelas', 1,'2019'), 
+('Entre Asas de Borboletas', 1,'2022'), 
+('A Canção dos Ventos Noturnos', 1,'2014') 
+
+INSERT INTO Livros VALUES 
+('A Chama Eterna', 2,'2019'), 
+('Sussurros da Floresta Encantada', 2,'2016'), 
+('O Enigma das Estrelas Cadentes', 2,'2018'), 
+('A Dança das Fadas', 2,'2020'), 
+('Além do Portal Mágico', 2,'2014'), 
+('A Busca pela Fonte da Eternidade', 2,'2017') 
+
+INSERT INTO Livros VALUES 
+('O Reino dos Sonhos', 3,'2020'), 
+('O Refúgio das Sombras', 3,'2016'), - 
+('A Dança dos Corvos', 3,'2018'), 
+('Entre Rosas e Espinhos', 3,'2020'), 
+('A Canção da Lua Desvanecida', 3,'2014'), - 
+('O Mistério da Chama Eterna', 3,'2017') 
+
+INSERT INTO Livros VALUES 
+('A Espada do Crepúsculo', 4,'2017'), 
+('Sombras na Torre do Crepúsculo', 4,'2015'), 
+('A Espada do Vento Cortante', 4,'2018'), 
+('O Despertar da Tempestade', 4,'2020'), 
+('Entre Brumas e Relâmpagos', 4,'2014'), 
+('A Canção do Trovão Silencioso', 4,'2017') - 
+
+INSERT INTO Livros VALUES 
+('A Canção da Lua', 5,'2022'), 
+('Luas Perdidas', 5,'2016'),
+('Entre Sombras e Estrelas', 5,'2018'), 
+('O Jardim Secreto da Meia-Noite', 5,'2020'), 
+('Canto dos Corvos', 5,'2014'), 
+('A Dança das Fadas Lunar', 5,'2017') - 
+
+INSERT INTO Livros VALUES 
+('O Enigma das Sombras', 6,'2016'), 
+('Crepúsculo da Alma', 6,'2016'), 
+('Sombras do Passado', 6,'2018'), 
+('O Refúgio das Estrelas', 6,'2020'), 
+('Caminhos da Lua Esquecida', 6,'2014'), 
+('A Canção dos Ventos Noturnos', 6,'2017') 
+
+INSERT INTO Livros VALUES 
+('Caminho das Estrelas', 7,'2021'), 
+('Alvorada Cósmica', 7,'2016'), 
+('Sussurros da Nebulosa', 7,'2018'), 
+('O Jardim das Estrelas Cadentes', 7,'2020'), 
+('A Dança da Lua Violeta', 7,'2014'), 
+('Entre Sombras e Cometas', 7,'2017')
+
+INSERT INTO Livros VALUES 
+('O Artefato Perdido', 8,'2015'), 
+('Chamas da Eternidade', 8,'2016'), 
+('A Sinfonia das Sombras', 8,'2018'), 
+('O Portal da Aurora', 8,'2020'), 
+('Caminhos do Crepúsculo', 8,'2014'), 
+('A Canção dos Ventos Flamejantes', 8,'2017')  
+
+INSERT INTO livros VALUES 
+('O Portal Encantado', 9,'2014'), 
+('Além do Horizonte Encantado', 9,'2016'), 
+('Sussurros da Floresta Onírica', 9,'2018'),
+('O Jardim dos Sonhos Perdidos', 9,'2020'),
+('Caminhos da Lua Prateada', 9,'2014'),
+('A Canção das Estrelas Cadentes', 9,'2017') 
+
+INSERT INTO Livros VALUES 
+('As Asas do Tempo', 10,'2019'), 
+('Ventos da Liberdade', 10,'2016'),
+('A Dança das Nuvens Luminosas', 10,'2018'),
+('O Portal da Aurora Celestial', 10,'2020'),
+('Caminhos do Crepúsculo Alado', 10,'2014'),
+('A Canção dos Ventos Eternos', 10,'2017') 
+
+book_id INT, loandate DATE, returndate DATE
+
+
+INSERT INTO Emprestimos VALUES 
+(3,'2019-01-01','2019-05-05'),
+(9,'2020-03-20','2020-06-06'),
+(10,'2017-05-19',NULL),
+(12,'2021-09-10','2022-02-20'),
+(15,'2021-08-07','2022-01-17'),
+(16,'2016-04-03',NULL),
+(17,'2019-05-28',NULL),
+(18,'2021-11-11',NULL),
+(21,'2017-04-19','2017-08-08'),
+(22,'2016-01-19','2016-09-10'),
+(23,'2019-02-01',NULL),
+(24,'2021-03-09','2021-06-19'),
+(25,'2015-04-04',NULL),
+(28,'2017-07-17',NULL),
+(33,'2017-09-09','2017-11-11'),
+(34,'2017-03-27','2017-06-20'),
+(36,'2021-11-21','NULL'),
+(39,'22-12-12','2023-04-20'),
+(44,'2018-04-15',NULL),
+(45,'2016-09-16',NULL),
+(46,'2017-07-14',NULL),
+(48,'2021-05-20',NULL),
+(49,'2015-06-26','2015-12-26'),
+(51,'2015-06-05','2015-12-05'),
+(54,'2021-01-01','2021-05-05'),
+(56,'2018-06-06','2018-07-20'),
+(57,'2020-10-20','2020-12-01'),
+(58,'2017-12-07',NULL),
+(59,'2019-01-19','2019-07-14'),
+(60,'2021-10-10',NULL),
+(61,'2015-06-22','2016-01-02'),
+(62,'2017-08-29',NULL)
+
+-- Desafios
+
+Escreva uma consulta para obter todos os livros emprestados no momento, incluindo o título do livro, nome do autor e a data de empréstimo.
+
+SELECT 
+  E.ID_Livro, 
+  L.Titulo, 
+  A.Nome, 
+  E.DatadoEmprestimo
+FROM Livros L
+JOIN Emprestimos E
+on L.ID_Livro = e.ID_Livro
+JOIN Autores A
+ON L.ID_Autora = a.ID_Autora
+ORDER BY A.Nome
+
+Escreva uma consulta para encontrar o autor com mais livros emprestados no momento.
+
+SELECT a.Nome, 
+	COUNT(E.ID_EMPRESTIMO) AS AutoresMaisLivrosEmprestados
+FROM Autores a
+JOIN Livros L
+ON A.ID_Autora = L.ID_Autora
+JOIN Emprestimos E
+ON L.ID_Livro = E.ID_Livro
+GROUP BY A.Nome
+ORDER BY COUNT(E.ID_EMPRESTIMO) DESC
+
+
+
+Escreva uma consulta para listar todos os livros que ainda não foram emprestados.
+
+SELECT L.Titulo, E.DatadoEmprestimo
+FROM Autores A
+INNER JOIN Livros L
+ON A.ID_Autora = L.ID_Autora
+LEFT JOIN Emprestimos E
+ON L.ID_Livro = E.ID_Livro
+WHERE E.DatadoEmprestimo IS NULL 
+
+Escreva uma consulta para listar todos os livros que foram emprestados.
+
+SELECT L.Titulo, E.DatadoEmprestimo
+FROM Autores A
+JOIN Livros L
+ON A.ID_Autora = L.ID_Autora
+JOIN Emprestimos E
+ON L.ID_Livro = E.ID_Livro
+
